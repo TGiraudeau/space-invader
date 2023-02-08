@@ -94,3 +94,29 @@ document.onkeydown = function(event) { // événement de touche enfoncée
     }
 
 };
+let tire = false;
+
+document.addEventListener("keyup", function(event) {
+if (event.keyCode === 32) {
+tire = true;
+}
+});
+
+setInterval(function() {
+if (!tire) {
+return;
+}
+tire = false;
+let tireur = document.querySelector(".tireur"); 
+let indexTireur = Array.from(tableauGrille).indexOf(tireur); 
+let indexTir = indexTireur; 
+
+while (indexTir >= 0 && indexTir < 240 && !tableauGrille[indexTir].classList.contains("alien")) { 
+    indexTir -= 20; 
+} 
+
+if (indexTir >= 0 && tableauGrille[indexTir].classList.contains("alien")) { 
+    tableauGrille[indexTir].classList.remove("alien"); 
+}
+}
+)
