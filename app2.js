@@ -131,7 +131,6 @@ function moveAlien() {
         clearInterval(invadersId)
 
     }
-        
 
 /*   if (toutesLesDivs[tireurIndex].classList.contains('alien', 'tireur')) {
     results.innerHTML = 'TES NUL'
@@ -150,7 +149,7 @@ function moveAlien() {
   }  */
 }
 
-invadersId = setInterval(moveAlien, 700);
+invadersId = setInterval(moveAlien, 200);
     
 document.addEventListener('keydown', function(event) {
     switch (event.keyCode) {
@@ -187,5 +186,15 @@ function moveLaser() {
     }
     
 }
-
-
+function endGame() {
+    if (aliensRemoved.length === alienInvaders.length) {
+        clearInterval(invadersId);
+        alert("Vous avez gagné! Bravo!");
+    }
+}
+function remove() {
+    for (let i = 0; i < alienInvaders.length; i++) {
+        toutesLesDivs[alienInvaders[i]].classList.remove('alien')
+    }
+    endGame();
+}
